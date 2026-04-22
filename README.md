@@ -136,30 +136,3 @@ npm run dev
 ```
 
 Frontend expects backend at `http://localhost:8080`.
-
-## Testing
-
-> Note: Using public Maven repository setup for now. If your network blocks it later, we can re-add mirror/proxy config quickly.
-
-### Backend
-```bash
-cd backend
-mvn test
-```
-
-Current test coverage includes `BookingServiceTest` for:
-- successful quick booking creation
-- single active booking conflict behavior
-
-### Frontend npm install/build troubleshooting
-If `cd frontend && npm install` or `npm run build` fails with `E403` from npm registry:
-1. Your environment likely blocks direct access to `registry.npmjs.org`.
-2. Configure npm to use your org package registry/proxy (Artifactory/Nexus/Verdaccio):
-```bash
-cd frontend
-npm config set registry https://<your-registry>/
-npm install
-npm run build
-```
-3. If your registry needs auth, run `npm login --registry https://<your-registry>/` or add an auth token in `.npmrc`.
-4. We added `frontend/.npmrc` defaults, but corporate policy can still override with environment-level npm configs.

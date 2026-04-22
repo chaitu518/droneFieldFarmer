@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 type ActiveBookingResponse = {
   hasActiveBooking: boolean
@@ -72,43 +71,19 @@ export default function App() {
   }
 
   return (
-    <div className="page">
-      <main className="card">
-        <section className="hero">
-          <div className="field" aria-hidden="true">
-            <div className="shadow" />
-            <div className="drone">
-              <div className="body">
-                <div className="tank" />
-              </div>
-              <div className="arm" />
-              <div className="arm vertical" />
-              <div className="rotor r1" />
-              <div className="rotor r2" />
-              <div className="rotor r3" />
-              <div className="rotor r4" />
-              <div className="spray" />
-            </div>
-          </div>
-
-          <div className="content">
-            <h1>Drone Field Farmer MVP</h1>
-            <p>3D-style agriculture drone preview with one-tap booking workflow.</p>
-            <p>
-              API Base: <code>{API_BASE}</code>
-            </p>
-
-            <div className="actions">
-              <button onClick={bookService} disabled={loading}>
-                {loading ? 'Booking...' : 'Book Service'}
-              </button>
-              <button onClick={loadActiveBooking}>Check Active Booking</button>
-            </div>
-
-            <div className="status">{message}</div>
-          </div>
-        </section>
-      </main>
-    </div>
+    <main style={{ maxWidth: 640, margin: '3rem auto', fontFamily: 'sans-serif' }}>
+      <h1>Drone Field Farmer MVP</h1>
+      <p>One-tap booking prototype with location detection and one active booking rule.</p>
+      <p>
+        API Base: <code>{API_BASE}</code>
+      </p>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <button onClick={bookService} disabled={loading}>
+          {loading ? 'Booking...' : 'Book Service'}
+        </button>
+        <button onClick={loadActiveBooking}>Check Active Booking</button>
+      </div>
+      <p style={{ marginTop: 16 }}>{message}</p>
+    </main>
   )
 }
